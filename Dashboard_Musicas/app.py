@@ -4,6 +4,9 @@ from dotenv import load_dotenv
 import os
 from langchain_groq import ChatGroq
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PLANILHAS_DIR = os.path.join(BASE_DIR, 'planilhas')
+
 load_dotenv()
 api_key = os.getenv("GROQ_API_KEY")
 
@@ -134,9 +137,6 @@ st.navigation(pages=[st.Page('visao_geral.py', title='Visão Geral'),
 
 id_model = "deepseek-r1-distill-llama-70b"
 temperature = 0.7
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-PLANILHAS_DIR = os.path.join(BASE_DIR, 'planilhas')
 
 artistas_mais_populares = pd.read_excel(os.path.join(PLANILHAS_DIR, 'artistas_mais_populares.xlsx')).head(10)
 assinaturas_falhas = pd.read_excel(os.path.join(PLANILHAS_DIR, 'assinaturas_falhas.xlsx'))
