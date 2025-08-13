@@ -123,11 +123,11 @@ def format_res(res, return_thinking=False):
             res = res.split("</think>")[-1].strip()
     return res
 
-st.navigation(pages=[st.Page('Visão_Geral.py', title='Visão Geral'),
-                    st.Page('Análise_Usuários.py', title='Análise de Usuários'),
-                    st.Page('Análise_Músicas_Artistas.py', title='Análise de Músicas/Artistas'),
-                    st.Page('Análise_Assinaturas.py', title='Análise de Assinaturas'),
-                    st.Page('Análise_Marketing.py', title='Análise de Marketing')],
+st.navigation(pages=[st.Page('Visao_Geral.py', title='Visão Geral'),
+                    st.Page('Analise_Usuarios.py', title='Análise de Usuários'),
+                    st.Page('Analise_Musicas_Artistas.py', title='Análise de Músicas/Artistas'),
+                    st.Page('Analise_Assinaturas.py', title='Análise de Assinaturas'),
+                    st.Page('Analise_Marketing.py', title='Análise de Marketing')],
                     position='sidebar').run()
 
 
