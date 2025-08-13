@@ -7,7 +7,16 @@ st.title('Análise de Músicas/Artistas')
 
 BASE_DIR = os.path.dirname(__file__)
 PLANILHAS_DIR = os.path.join(BASE_DIR, 'planilhas')
-st.write("Arquivos na pasta planilhas:", os.listdir(PLANILHAS_DIR))  
+st.write("Caminho base:", BASE_DIR)
+st.write("Arquivos em planilhas:", os.listdir(PLANILHAS_DIR))
+
+# Leitura segura do arquivo
+file_path = os.path.join(PLANILHAS_DIR, 'artistas_mais_populares.xlsx')
+if os.path.exists(file_path):
+    artistas_mais_populares = pd.read_excel(file_path).head(10)
+    st.write("Arquivo lido com sucesso!")
+else:
+    st.error("Arquivo 'artistas_mais_populares.xlsx' não encontrado!")
 numero_albuns = pd.read_excel(os.path.join(PLANILHAS_DIR, 'numero_albuns.xlsx'))
 numero_albuns['Ano'] = numero_albuns['Ano'].astype(int)
 
