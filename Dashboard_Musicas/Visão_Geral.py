@@ -1,23 +1,28 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import os
 
 st.title('Visão Geral')
 
         
-total_usuarios = pd.read_excel('planilhas/total_usuarios.xlsx')
+BASE_DIR = os.path.dirname(__file__)
+PLANILHAS_DIR = os.path.join(BASE_DIR, 'planilhas')
+
+# Carregando planilhas com conversão da coluna 'Ano'
+total_usuarios = pd.read_excel(os.path.join(PLANILHAS_DIR, 'total_usuarios.xlsx'))
 total_usuarios['Ano'] = total_usuarios['Ano'].astype(int)
 
-receita_total = pd.read_excel('planilhas/receita_total.xlsx')
+receita_total = pd.read_excel(os.path.join(PLANILHAS_DIR, 'receita_total.xlsx'))
 receita_total['Ano'] = receita_total['Ano'].astype(int)
 
-musicas_ultimo_mes = pd.read_excel('planilhas/musicas_ultimo_mes.xlsx')
+musicas_ultimo_mes = pd.read_excel(os.path.join(PLANILHAS_DIR, 'musicas_ultimo_mes.xlsx'))
 musicas_ultimo_mes['Ano'] = musicas_ultimo_mes['Ano'].astype(int)
 
-taxa_cancelamento = pd.read_excel('planilhas/taxa_cancelamento.xlsx')
+taxa_cancelamento = pd.read_excel(os.path.join(PLANILHAS_DIR, 'taxa_cancelamento.xlsx'))
 taxa_cancelamento['Ano'] = taxa_cancelamento['Ano'].astype(int)
 
-total_usuarios_ativos = pd.read_excel('planilhas/total_usuarios_ativos.xlsx')
+total_usuarios_ativos = pd.read_excel(os.path.join(PLANILHAS_DIR, 'total_usuarios_ativos.xlsx'))
 total_usuarios_ativos['Ano'] = total_usuarios_ativos['Ano'].astype(int)
 
 anos_vg = sorted(set(total_usuarios["Ano"].unique().tolist() + 
