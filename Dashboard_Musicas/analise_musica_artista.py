@@ -7,16 +7,7 @@ st.title('Análise de Músicas/Artistas')
 
 BASE_DIR = os.path.dirname(__file__)
 PLANILHAS_DIR = os.path.join(BASE_DIR, 'planilhas')
-st.write("Caminho base:", BASE_DIR)
-st.write("Arquivos em planilhas:", os.listdir(PLANILHAS_DIR))
 
-# Leitura segura do arquivo
-file_path = os.path.join(PLANILHAS_DIR, 'artistas_mais_populares.xlsx')
-if os.path.exists(file_path):
-    artistas_mais_populares = pd.read_excel(file_path).head(10)
-    st.write("Arquivo lido com sucesso!")
-else:
-    st.error("Arquivo 'artistas_mais_populares.xlsx' não encontrado!")
 numero_albuns = pd.read_excel(os.path.join(PLANILHAS_DIR, 'numero_albuns.xlsx'))
 numero_albuns['Ano'] = numero_albuns['Ano'].astype(int)
 
@@ -34,7 +25,9 @@ musicas_mais_tocadas['Ano'] = musicas_mais_tocadas['Ano'].astype(int)
 
 musicas_por_genero = pd.read_excel(os.path.join(PLANILHAS_DIR, 'musicas_por_genero.xlsx'))
 musicas_por_genero['Ano'] = musicas_por_genero['Ano'].astype(int)
-  
+
+artistas_mais_populares = pd.read_excel(os.path.join(PLANILHAS_DIR, 'artistas_mais_populares.xlsx')).head(10)
+
 anos_Am = sorted(set(numero_albuns["Ano"].unique().tolist() + 
                         numero_generos["Ano"].unique().tolist() +
                         numero_musicas["Ano"].unique().tolist() +
