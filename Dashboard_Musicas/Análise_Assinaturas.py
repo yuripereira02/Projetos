@@ -1,14 +1,18 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-#
+import os
+
 st.title('Análise de Assinaturas')
 
-assinaturas_pagas = pd.read_excel('planilhas/assinaturas_pagas.xlsx')
-assinaturas_falhas = pd.read_excel('planilhas/assinaturas_falhas.xlsx')
-assinaturas_reembolsadas = pd.read_excel('planilhas/assinaturas_reembolsadas.xlsx')
-valor_total_assinaturas_pagas = pd.read_excel('planilhas/valor_total_assinaturas_pagas.xlsx')
-assinaturas_por_tipo_status = pd.read_excel('planilhas/assinaturas_por_tipo_status.xlsx')
+BASE_DIR = os.path.dirname(__file__)
+PLANILHAS_DIR = os.path.join(BASE_DIR, 'planilhas')
+
+assinaturas_pagas = pd.read_excel(os.path.join(PLANILHAS_DIR, 'assinaturas_pagas.xlsx'))
+assinaturas_falhas = pd.read_excel(os.path.join(PLANILHAS_DIR, 'assinaturas_falhas.xlsx'))
+assinaturas_reembolsadas = pd.read_excel(os.path.join(PLANILHAS_DIR, 'assinaturas_reembolsadas.xlsx'))
+valor_total_assinaturas_pagas = pd.read_excel(os.path.join(PLANILHAS_DIR, 'valor_total_assinaturas_pagas.xlsx'))
+assinaturas_por_tipo_status = pd.read_excel(os.path.join(PLANILHAS_DIR, 'assinaturas_por_tipo_status.xlsx'))
 
 col_index = valor_total_assinaturas_pagas.columns.get_loc("sum")
 total_assinaturas_pagas = int(valor_total_assinaturas_pagas.iloc[0, col_index])

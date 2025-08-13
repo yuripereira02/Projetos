@@ -1,26 +1,29 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-
+import os
 
 st.title('Análise de Marketing')
 
-orcamento_instagram = pd.read_excel('planilhas/orcamento_instagram.xlsx')
+BASE_DIR = os.path.dirname(__file__)
+PLANILHAS_DIR = os.path.join(BASE_DIR, 'planilhas')
+
+orcamento_instagram = pd.read_excel(os.path.join(PLANILHAS_DIR, 'orcamento_instagram.xlsx'))
 orcamento_instagram['Ano'] = orcamento_instagram['Ano'].astype(int)
 
-orcamento_facebook = pd.read_excel('planilhas/orcamento_facebook.xlsx')
+orcamento_facebook = pd.read_excel(os.path.join(PLANILHAS_DIR, 'orcamento_facebook.xlsx'))
 orcamento_facebook['Ano'] = orcamento_facebook['Ano'].astype(int)
 
-orcamento_google_Ads = pd.read_excel('planilhas/orcamento_google_Ads.xlsx')
+orcamento_google_Ads = pd.read_excel(os.path.join(PLANILHAS_DIR, 'orcamento_google_Ads.xlsx'))
 orcamento_google_Ads['Ano'] = orcamento_google_Ads['Ano'].astype(int)
 
-orcamento_tiktok = pd.read_excel('planilhas/orcamento_tiktok.xlsx')
+orcamento_tiktok = pd.read_excel(os.path.join(PLANILHAS_DIR, 'orcamento_tiktok.xlsx'))
 orcamento_tiktok['Ano'] = orcamento_tiktok['Ano'].astype(int)
 
-orcamento_youtube = pd.read_excel('planilhas/orcamento_youtube.xlsx')
+orcamento_youtube = pd.read_excel(os.path.join(PLANILHAS_DIR, 'orcamento_youtube.xlsx'))
 orcamento_youtube['Ano'] = orcamento_youtube['Ano'].astype(int)
 
-campanhas_por_canal = pd.read_excel('planilhas/campanhas_por_canal.xlsx')
+campanhas_por_canal = pd.read_excel(os.path.join(PLANILHAS_DIR, 'campanhas_por_canal.xlsx'))
 campanhas_por_canal['Ano'] = campanhas_por_canal['Ano'].astype(int)
 
 anos_analise_marketing = sorted(set(orcamento_instagram['Ano'].unique().tolist() +

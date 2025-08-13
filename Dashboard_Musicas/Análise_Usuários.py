@@ -1,27 +1,31 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import os
 
 st.title('Análise de Usuários')
 
-crescimento_usuarios = pd.read_excel('planilhas/crescimento_usuarios.xlsx')
+BASE_DIR = os.path.dirname(__file__)
+PLANILHAS_DIR = os.path.join(BASE_DIR, 'planilhas')
 
+crescimento_usuarios = pd.read_excel(os.path.join(PLANILHAS_DIR, 'crescimento_usuarios.xlsx'))
 crescimento_usuarios['Ano'] = crescimento_usuarios['Ano'].astype(int)
+
 ordem_mes = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
-                'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+             'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 crescimento_usuarios['Mês'] = pd.Categorical(
     crescimento_usuarios['Mês'],
     categories=ordem_mes,
     ordered=True
 )
 
-usuarios_por_genero = pd.read_excel('planilhas/usuarios_por_genero.xlsx')
+usuarios_por_genero = pd.read_excel(os.path.join(PLANILHAS_DIR, 'usuarios_por_genero.xlsx'))
 usuarios_por_genero['Ano'] = usuarios_por_genero['Ano'].astype(int)
 
-usuarios_mais_ativos = pd.read_excel('planilhas/usuarios_mais_ativos.xlsx')
+usuarios_mais_ativos = pd.read_excel(os.path.join(PLANILHAS_DIR, 'usuarios_mais_ativos.xlsx'))
 usuarios_mais_ativos['Ano'] = usuarios_mais_ativos['Ano'].astype(int)
 
-distribuicao_por_pais = pd.read_excel('planilhas/distribuicao_por_pais.xlsx')
+distribuicao_por_pais = pd.read_excel(os.path.join(PLANILHAS_DIR, 'distribuicao_por_pais.xlsx'))
 distribuicao_por_pais['Ano'] = distribuicao_por_pais['Ano'].astype(int)
 
 anos_Au = sorted(set(crescimento_usuarios["Ano"].unique().tolist() + 

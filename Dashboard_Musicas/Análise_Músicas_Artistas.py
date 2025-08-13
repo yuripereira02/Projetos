@@ -1,28 +1,32 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import os
 
 st.title('Análise de Músicas/Artistas')
 
-numero_albuns = pd.read_excel('planilhas/numero_albuns.xlsx')
+BASE_DIR = os.path.dirname(__file__)
+PLANILHAS_DIR = os.path.join(BASE_DIR, 'planilhas')
+
+numero_albuns = pd.read_excel(os.path.join(PLANILHAS_DIR, 'numero_albuns.xlsx'))
 numero_albuns['Ano'] = numero_albuns['Ano'].astype(int)
 
-numero_musicas = pd.read_excel('planilhas/numero_musicas.xlsx')
+numero_musicas = pd.read_excel(os.path.join(PLANILHAS_DIR, 'numero_musicas.xlsx'))
 numero_musicas['Ano'] = numero_musicas['Ano'].astype(int)
 
-numero_generos = pd.read_excel('planilhas/numero_generos.xlsx')
+numero_generos = pd.read_excel(os.path.join(PLANILHAS_DIR, 'numero_generos.xlsx'))
 numero_generos['Ano'] = numero_generos['Ano'].astype(int)
 
-numero_musicas_skipadas = pd.read_excel('planilhas/numero_musicas_skipadas.xlsx')
+numero_musicas_skipadas = pd.read_excel(os.path.join(PLANILHAS_DIR, 'numero_musicas_skipadas.xlsx'))
 numero_musicas_skipadas['Ano'] = numero_musicas_skipadas['Ano'].astype(int)
 
-musicas_mais_tocadas = pd.read_excel('planilhas/musicas_mais_tocadas.xlsx')
+musicas_mais_tocadas = pd.read_excel(os.path.join(PLANILHAS_DIR, 'musicas_mais_tocadas.xlsx'))
 musicas_mais_tocadas['Ano'] = musicas_mais_tocadas['Ano'].astype(int)
 
-musicas_por_genero = pd.read_excel('planilhas/musicas_por_genero.xlsx')
+musicas_por_genero = pd.read_excel(os.path.join(PLANILHAS_DIR, 'musicas_por_genero.xlsx'))
 musicas_por_genero['Ano'] = musicas_por_genero['Ano'].astype(int)
 
-artistas_mais_populares = pd.read_excel('planilhas/artistas_mais_populares.xlsx').head(10)
+artistas_mais_populares = pd.read_excel(os.path.join(PLANILHAS_DIR, 'artistas_mais_populares.xlsx')).head(10)
     
 anos_Am = sorted(set(numero_albuns["Ano"].unique().tolist() + 
                         numero_generos["Ano"].unique().tolist() +
