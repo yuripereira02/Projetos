@@ -34,8 +34,6 @@ musicas_mais_tocadas['Ano'] = musicas_mais_tocadas['Ano'].astype(int)
 
 musicas_por_genero = pd.read_excel(os.path.join(PLANILHAS_DIR, 'musicas_por_genero.xlsx'))
 musicas_por_genero['Ano'] = musicas_por_genero['Ano'].astype(int)
-
-artistas_mais_populares = pd.read_excel(os.path.join(PLANILHAS_DIR, 'artistas_mais_populares.xlsx')).head(10)
   
 anos_Am = sorted(set(numero_albuns["Ano"].unique().tolist() + 
                         numero_generos["Ano"].unique().tolist() +
