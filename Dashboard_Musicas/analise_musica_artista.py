@@ -7,7 +7,7 @@ st.title('Análise de Músicas/Artistas')
 
 BASE_DIR = os.path.dirname(__file__)
 PLANILHAS_DIR = os.path.join(BASE_DIR, 'planilhas')
-
+st.write("Arquivos na pasta planilhas:", os.listdir(PLANILHAS_DIR))  
 numero_albuns = pd.read_excel(os.path.join(PLANILHAS_DIR, 'numero_albuns.xlsx'))
 numero_albuns['Ano'] = numero_albuns['Ano'].astype(int)
 
@@ -27,7 +27,7 @@ musicas_por_genero = pd.read_excel(os.path.join(PLANILHAS_DIR, 'musicas_por_gene
 musicas_por_genero['Ano'] = musicas_por_genero['Ano'].astype(int)
 
 artistas_mais_populares = pd.read_excel(os.path.join(PLANILHAS_DIR, 'artistas_mais_populares.xlsx')).head(10)
-    
+  
 anos_Am = sorted(set(numero_albuns["Ano"].unique().tolist() + 
                         numero_generos["Ano"].unique().tolist() +
                         numero_musicas["Ano"].unique().tolist() +
