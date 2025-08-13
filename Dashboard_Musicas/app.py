@@ -18,7 +18,8 @@ def load_llm(id_model, temperature):
         temperature = temperature,
         max_tokens=None,
         timeout=None,
-        max_retries=2
+        max_retries=2,
+        api_key=api_key
     )
 
 
