@@ -13,15 +13,15 @@ api_key = os.getenv("GROQ_API_KEY")
 st.set_page_config(page_title='Dashboard Musicas', page_icon='bar_chart', layout='wide')
 
 def load_llm(id_model, temperature):
+    api_key = os.environ.get("GROQ_API_KEY")
+    if not api_key:
+        raise ValueError("❌ GROQ_API_KEY não encontrada nas variáveis de ambiente.")
+
     return ChatGroq(
-        model = id_model,
-        temperature = temperature,
-        max_tokens=None,
-        timeout=None,
-        max_retries=2,
+        model=id_model,
+        temperature=temperature,
         api_key=api_key
     )
-
 
 def build_prompt(artistas_mais_populares, assinaturas_falhas, assinaturas_pagas, assinaturas_por_tipo_status,
                 assinaturas_reembolsadas, campanhas_por_canal, crescimento_usuarios, distribuicao_por_pais,
