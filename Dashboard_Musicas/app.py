@@ -127,6 +127,26 @@ def format_res(res, return_thinking=False):
             res = res.split("</think>")[-1].strip()
     return res
 
+st.markdown(
+    """
+    <style>
+    /* Largura fixa da sidebar */
+    [data-testid="stSidebar"] {
+        width: 325px !important;
+        min-width: 325px !important;
+        max-width: 325px !important;
+        flex: 0 0 325px !important;
+    }
+
+    /* Ajusta o conteúdo interno da sidebar */
+    [data-testid="stSidebarContent"] {
+        width: 325px !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 st.navigation(pages=[st.Page('visao_geral.py', title='Visão Geral'),
                     st.Page('analise_users.py', title='Análise de Usuários'),
                     st.Page('analise_musica_artista.py', title='Análise de Músicas/Artistas'),
