@@ -4,7 +4,7 @@ import plotly.express as px
 #
 @st.cache_resource
 def carregar_dados():
-    df = pd.read_parquet('dados_covid19_agregado.parquet')
+    df = pd.read_parquet('Covid/dados_covid19_agregado.parquet')
     return df
 
 df = carregar_dados()
