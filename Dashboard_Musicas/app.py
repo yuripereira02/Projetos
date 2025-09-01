@@ -114,6 +114,7 @@ def build_prompt(artistas_mais_populares, assinaturas_falhas, assinaturas_pagas,
         Valor total de assinaturas pagas:
         {valor_total_assinaturas_pagas}
 
+        Seja direto nas suas respostas, não precisa mostrar o processo de como as coisas são feitas.s
         Com base nessas informações responda isto: {input}
     '''
     return prompt
