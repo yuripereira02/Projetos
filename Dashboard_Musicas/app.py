@@ -63,7 +63,8 @@ def build_prompt(artistas_mais_populares, assinaturas_falhas, assinaturas_pagas,
         {musicas_por_genero},
         
         Músicas no último mês:
-        {musicas_ultimo_mes},
+        {musicas_ultimo_mes}
+        (O Mês 12 é o ultimo.),
         
         Número de álbuns:
         {numero_albuns},
@@ -199,5 +200,5 @@ if input:
                     orcamento_tiktok, orcamento_youtube, receita_total, taxa_cancelamento, total_usuarios_ativos,
                     total_usuarios, usuarios_mais_ativos, usuarios_por_genero, valor_total_assinaturas_pagas, input)
     res = llm.invoke(prompt)
-    res_formatado = format_res(res.content.strip, return_thinking=False)
+    res_formatado = format_res(res.content, return_thinking=False)
     st.sidebar.markdown(res_formatado)
