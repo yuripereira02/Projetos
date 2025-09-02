@@ -31,7 +31,7 @@ with aa4:
     
 grafico_assinaturas_ts = px.bar(assinaturas_por_tipo_status, x='Tipo', y='Quantidade',
                                 title='Assinaturas por tipo e status', color='Status',
-                                barmode='group', color_discrete_sequence=["#751B99", '#7B44D3'],
+                                barmode='group', color_discrete_sequence=["#8F3CAF", '#7B44D3'],
                                 text='Quantidade')
 grafico_assinaturas_ts.update_layout(yaxis_showgrid=False)
 grafico_assinaturas_ts.update_traces(textposition='outside')
